@@ -1,9 +1,9 @@
-import { Module } from "@nestjs/common";
-import { DependencyServiceProvider } from "./dependency-service.provider";
+import { Module } from '@nestjs/common'
+
+import { DependencyService } from './dependency.service'
 
 @Module({
-  providers: [DependencyServiceProvider],
-  exports: [DependencyServiceProvider],
+  providers: [DependencyService],
+  exports: [DependencyService],
 })
-export class DependencyServiceModule {
-}
+export class DependencyServiceModule {}

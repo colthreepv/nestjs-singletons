@@ -1,7 +1,7 @@
-import { Injectable, Module } from "@nestjs/common";
-import { DependencyServiceModule } from "./dependency-service.module";
-import { DependencyService } from "./dependency.service";
-import { DependencyServiceProvider } from "./dependency-service.provider";
+import { Injectable, Module } from '@nestjs/common'
+
+import { DependencyServiceModule } from './dependency-service.module'
+import { DependencyService } from './dependency.service'
 
 @Injectable()
 class SecondConsumer {
@@ -9,12 +9,8 @@ class SecondConsumer {
 }
 
 @Module({
-  // Works fine using the module to provide DependencyService
-  // imports: [DependencyServiceModule],
-  // providers: [SecondConsumer],
-
-  // But don't work if directly importing the provider
-  providers: [DependencyServiceProvider, SecondConsumer]
+  imports: [DependencyServiceModule],
+  providers: [DependencyService, SecondConsumer]
 })
 export class SecondConsumerModule {
   constructor(private readonly second: SecondConsumer) {}
